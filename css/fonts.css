@@ -1,0 +1,35 @@
+
+@font-face {
+    font-family: 'GravitasOne';
+    src: url('../fonts/GravitasOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'OswaldBold';
+    src: url('../fonts/Oswald-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'OswaldExtraLight';
+    src: url('../fonts/Oswald-ExtraLight.ttf');
+}
+
+@font-face {
+    font-family: 'OswaldLight';
+    src: url('../fonts/Oswald-Light.ttf');
+}
+
+@font-face {
+    font-family: 'OswaldMedium';
+    src: url('../fonts/Oswald-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'OswaldRegular';
+    src: url('../fonts/Oswald-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'OswaldSemiBold';
+    src: url('/fonts/Oswald-SemiBold.ttf');
+}
