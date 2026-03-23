@@ -27,6 +27,8 @@
 
     border-radius: 20px;
     padding: 40px;
+
+    box-shadow: 0 0 10px black;
 }
 
 .main_box_cutter{
