@@ -1,14 +1,14 @@
 /* Penis */
 
 const longUrl = document.getElementById('longUrl');
-const shortUrl = document.getElementById('shortUrl');
+const shortUrlHtml = document.getElementById('shortUrl');
 
 const submitBtn = document.getElementById('submitBtn');
 const copyBtn = document.getElementById('copyBtn');
 
 // Сокращение ссылки
 submitBtn.addEventListener('click', async () => {
-    const url = longUrl.value;
+    const url = longUrl.value.trim();
 
     if (!url) {
         alert('Вставь ссылку');
@@ -19,14 +19,17 @@ submitBtn.addEventListener('click', async () => {
         const res = await fetch(`https://url-shortener-production-d04e.up.railway.app/url-shortener=${url}`);
         const data = await res.json();
 
-        shortUrl.value = data.result.full_short_link;
+        shortUrlHtml.value = data.result.shortUrl;
     } catch (err) {
-        alert('Ошибка');
+        alert('Ошибка при сокращении');
+        console.error(err);
     }
 });
 
 // Копирование
 copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(shortUrl.value);
+    if (!shortUrlHtml.value) return;
+
+    navigator.clipboard.writeText(shortUrlHtml.value);
     alert('Скопировано!');
 });
