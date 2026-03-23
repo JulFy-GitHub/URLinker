@@ -1,4 +1,3 @@
-
 console.log("App Started");
 
 const longUrl = document.getElementById('longUrl');
@@ -7,7 +6,6 @@ const submitBtn = document.getElementById('submitBtn');
 const copyBtn = document.getElementById('copyBtn');
 
 submitBtn.addEventListener('click', async () => {
-    console.log("Penis");
     const url = longUrl.value.trim();
 
     // проверка
@@ -24,13 +22,13 @@ submitBtn.addEventListener('click', async () => {
             },
             body: JSON.stringify({ url })
         });
-        console.log(res.body);
+        console.log("Body" + res.body);
         
         
         const data = await res.json();
 
         // предполагаем что бэк отдаёт { shortUrl: "..." }
-        shortUrlHtml.value = data.shortUrlHtml;
+        shortUrlHtml.value = data.shortUrl;
 
     } catch (err) {
         console.error(err);
