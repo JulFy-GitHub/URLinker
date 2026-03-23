@@ -1,34 +1,43 @@
 /* Penis */
-
 const longUrl = document.getElementById('longUrl');
 const shortUrlHtml = document.getElementById('shortUrl');
-
 const submitBtn = document.getElementById('submitBtn');
 const copyBtn = document.getElementById('copyBtn');
 
-// Сокращение ссылки
 submitBtn.addEventListener('click', async () => {
     const url = longUrl.value.trim();
 
+    // проверка
     if (!url) {
         alert('Вставь ссылку');
         return;
     }
 
     try {
-        const res = await fetch(`https://url-shortener-production-d04e.up.railway.app/url-shortener=${url}`);
+        const res = await fetch('https://url-shortener-production-d04e.up.railway.app/url-shortener', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ url })
+        });
+
         const data = await res.json();
 
-        shortUrlHtml.value = data.result.shortUrl;
+        // предполагаем что бэк отдаёт { shortUrl: "..." }
+        shortUrlHtml.value = data.shortUrlHtml;
+
     } catch (err) {
-        alert('Ошибка при сокращении');
         console.error(err);
+        alert('Ошибка запроса');
     }
 });
 
-// Копирование
 copyBtn.addEventListener('click', () => {
-    if (!shortUrlHtml.value) return;
+    if (!shortUrl.value) {
+        alert('Нечего копировать');
+        return;
+    }
 
     navigator.clipboard.writeText(shortUrlHtml.value);
     alert('Скопировано!');
