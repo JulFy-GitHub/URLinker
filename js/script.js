@@ -8,7 +8,6 @@ const copyBtn = document.getElementById('copyBtn');
 submitBtn.addEventListener('click', async () => {
     const url = longUrl.value.trim();
 
-    // проверка
     if (!url) {
         alert('Вставь ссылку');
         return;
@@ -22,12 +21,8 @@ submitBtn.addEventListener('click', async () => {
             },
             body: JSON.stringify({ url })
         });
-        console.log("Body" + res.body);
-        
         
         const data = await res.json();
-
-        // предполагаем что бэк отдаёт { shortUrl: "..." }
         shortUrlHtml.value = data.shortUrl;
 
     } catch (err) {
